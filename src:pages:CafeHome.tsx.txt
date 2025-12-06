@@ -1,0 +1,16 @@
+import { HeroScene } from "@/components/cafe/HeroScene"
+import { CoffeeSection } from "@/components/cafe/CoffeeSection"
+import { DessertSection } from "@/components/cafe/DessertSection"
+import { Footer } from "@/components/cafe/Footer"
+
+export default function CafeHome() {
+  return (
+    <div className="bg-background min-h-screen text-foreground">
+      <HeroScene />
+      <div className="h-screen" />
+      <CoffeeSection />
+      <DessertSection />
+      <Footer />
+    </div>
+  )
+}
