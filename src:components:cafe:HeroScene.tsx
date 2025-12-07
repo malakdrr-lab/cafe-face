@@ -80,14 +80,21 @@ function Particles() {
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
       <dodecahedronGeometry args={[0.05, 0]} />
-      <meshStandardMaterial color="#D4AF37" emissive="#D4AF37" emissiveIntensity={0.5} toneMapped={false} />
+      <meshStandardMaterial 
+        color="#D4AF37" 
+        emissive="#D4AF37" 
+        emissiveIntensity={0.5} 
+        toneMapped={false} 
+      />
     </instancedMesh>
   )
 }
 
 export function HeroScene() {
+  const logoImg = '/assets/generated_images/gold_coffee_bean_logo_on_black.png'
+
   return (
-    <div className="h-screen w-full absolute top-0 left-0 z-0">
+    <div className="h-screen w-full fixed top-0 left-0 z-0">
       <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
         <color attach="background" args={["#050505"]} />
         <ambientLight intensity={0.5} />
@@ -96,7 +103,14 @@ export function HeroScene() {
         
         <CoffeeBean />
         <Particles />
-        <Sparkles count={100} scale={10} size={2} speed={0.4} opacity={0.5} color="#D4AF37" />
+        <Sparkles 
+          count={100} 
+          scale={10} 
+          size={2} 
+          speed={0.4} 
+          opacity={0.5} 
+          color="#D4AF37" 
+        />
         <Environment preset="city" />
       </Canvas>
       
@@ -105,9 +119,16 @@ export function HeroScene() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-center flex flex-col items-center"
+          className="text-center flex flex-col items-center gap-6"
         >
-          <h1 className="font-display text-6xl md:text-9xl font-bold text-white tracking-tighter mb-4">
+          <motion.img 
+            src={logoImg} 
+            alt="Cafe Face Logo" 
+            className="w-32 h-32 md:w-48 md:h-48 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+          />
+          <h1 className="font-display text-6xl md:text-9xl font-bold text-white tracking-tighter">
             CAFE FACE
           </h1>
           <p className="font-body text-lg md:text-xl text-primary tracking-[0.5em] uppercase">
